@@ -1,34 +1,24 @@
-"use client";
 import { createTodo } from "@/app/actions";
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const InputGroup = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [todo, setTodo] = useState<string[]>([]);
-
-  const handleAdd = () => {
-    if (inputValue.trim() !== "") {
-      setTodo([inputValue, ...todo]);
-    }
-  };
-  console.log(todo);
   return (
-    <div>
-      <form action={createTodo}>
-        <input
+    <div className="w-full flex  justify-center items-center p-4">
+      <form action={createTodo} className="flex w-full md:w-[400px] gap-2 ">
+        <Input
           type="text"
           name="input"
-          placeholder="Enter"
-          className="p-2 border"
-          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Enter your todo"
+          className="p-2 border !outline-none !ring-0 !ring-offset-0"
         />
-        <button
-        type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handleAdd}
+        <Button
+          type="submit"
+          className="font-medium"
+          // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           Add
-        </button>
+        </Button>
       </form>
     </div>
   );
